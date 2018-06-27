@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Colors and People</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Colors and People</h1>
+        <div th:each="eachPerson:${people}">
+            <h2 th:text="${eachPerson.myName}"></h2>
+            <h3 th:text="${#lists.size(eachPerson.colors)>0}?'My Colors':'No colors for me'"></h3>
+            <div th:each="eachColor:${eachPerson.colors}">
+                <p th:if="${#lists.size(eachColor.colorName)>0}" th:text="${eachColor.colorName}">Color</p>
+            </div>
+        </div>
+    </div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>
